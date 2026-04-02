@@ -12,15 +12,18 @@ int main() {
 	// variables
 	const int LENGTH = 20;
 	int values[LENGTH];
-	//while (true) {
+	while (true) {
 		for (int i = 0; i < LENGTH; i++) { // roll the dice
 			values[i] = dist(gen);
 		}
 		displayRun(values, LENGTH);
-	//}
+		if (hasRun(values, LENGTH)) {
+			break;
+		}
+	}
 }
 void displayRun(int values[], int size) { // the output
-	for (int j = 0; j < size - 1; j++) {
+	for (int j = 0; j < size; j++) {
 		if (values[j] == values[j + 1] && values[j] != values[j - 1]) { // start of run
 			cout << "(";
 		}
@@ -30,6 +33,7 @@ void displayRun(int values[], int size) { // the output
 		}
 		cout << " ";
 	}
+	cout << endl;
 }
 bool hasRun(int values[], int size) {
 	for (int j = 0; j < size - 1; j++) {
